@@ -1,20 +1,25 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import * as Api from "../../api";
 import styled from "../../styles/user.module.css";
 
 const User = () => {
+    const [user, setUser] = useState("");
     const [isEditable, setIsEditable] = useState(true);
-    const user = {
-        id: "70f9e61f-092f-438b-a268-c8c38369a0a3",
-        name: "KIM HYUNSEO",
-        description: "NodeJS Developer",
-        email: "khs050305@naver.com",
-        image: "https://avatars.githubusercontent.com/u/74223263?v=4",
-        likes: [],
-        createdAt: "2022-03-26T09:39:51.049+00:00",
-        updatedAt: "2022-03-26T09:41:22.622+00:00",
-        __v: 0,
-    };
+
+    useEffect(() => {
+        // Api.get("users", user_id).then((res) => setUser(res.data));
+        setUser({
+            id: "70f9e61f-092f-438b-a268-c8c38369a0a3",
+            name: "KIM HYUNSEO",
+            description: "NodeJS Developer",
+            email: "khs050305@naver.com",
+            image: "https://avatars.githubusercontent.com/u/74223263?v=4",
+            likes: [],
+            createdAt: "2022-03-26T09:39:51.049+00:00",
+            updatedAt: "2022-03-26T09:41:22.622+00:00",
+            __v: 0,
+        });
+    }, []);
 
     const posts = [
         {
