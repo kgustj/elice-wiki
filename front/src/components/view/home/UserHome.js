@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../../../store/actions/userAction";
+import { useSelector } from "react-redux";
+// import { logoutUser } from "../../../store/actions/userAction";
 import Loader from "../../Loader";
 import WeekList from "./WeekList";
 import Goal from "./Goal";
@@ -24,16 +24,16 @@ function UserHome() {
   let num = 1;
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
   const userState = useSelector((state) => (state ? state.userReducer.user : null));
   const userAuthorized = userState?.authorized;
 
-  const handleLogout = () => {
-    // dispatch 함수를 이용해 로그아웃함.
-    dispatch(logoutUser());
-    // 기본 페이지로 돌아감.
-    navigate("/");
-  };
+  //   const handleLogout = () => {
+  //     // dispatch 함수를 이용해 로그아웃함.
+  //     dispatch(logoutUser());
+  //     // 기본 페이지로 돌아감.
+  //     navigate("/");
+  //   };
 
   const fetchSetState = (data) => {
     setPosts((prev) => [...prev, ...data.payload.postListInfo]);
