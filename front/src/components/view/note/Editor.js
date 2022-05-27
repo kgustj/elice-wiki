@@ -10,60 +10,65 @@ import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Alert, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const SubmitBtn = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  float: right;
-  font-weight: bold;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: #7353ea;
-  color: white;
-  border-radius: 4px;
-  padding: 0px 1.25rem;
-  margin: 15px 0 15px 0;
-  height: 2rem;
-  font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: #7353ea;
+    color: white;
+    border-radius: 4px;
+    padding: 0px 1.25rem;
+    margin: 15px 0 15px 0;
+    height: 2rem;
+    font-size: 1rem;
 `;
 
-const Writer = ({ titleInp, tag, week }) => {
-  const editorRef = useRef();
-  const btnClickListener = async () => {
-    const editorInstance = editorRef.current.getInstance();
-    const getContent_md = editorInstance.getMarkdown();
-    console.log(titleInp, tag, week);
+const Writer = ({ title, tag, week, setIsEditing }) => {
+    const editorRef = useRef();
+    const navigate = useNavigate();
+    const btnClickListener = async () => {
+        const editorInstance = editorRef.current.getInstance();
+        const body = editorInstance.getMarkdown();
+        await Api.post("newpost", {
+            week,
+            tag,
+            title,
+            body,
+        });
+        navigate("/");
+    };
 
-    await Api.post("newpost", {
-      week,
-      tag,
-      titleInp,
-    });
-  };
+    const checkTitle = title !== "";
+    const checkTag = tag !== "";
+    const checkWeek = week !== "";
+    const validation = checkTitle && checkTag && checkWeek;
 
-  const checkTitle = titleInp !== "";
-
-  return (
-    <>
-      <Editor
-        plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
-        // placeholder="공유하고 싶은 학습 내용을 적어보세요!"
-        previewStyle="vertical"
-        height="500px"
-        initialEditType="markdown"
-        useCommandShortcut={true}
-        ref={editorRef}
-      />
-      <Link to={"/"} style={{ textDecoration: "none" }}>
-        &larr; 나가기
-      </Link>
-      <SubmitBtn onClick={btnClickListener} disabled={!checkTitle}>
-        출간하기
-      </SubmitBtn>
-    </>
-  );
+    return (
+        <>
+            <Editor
+                plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
+                placeholder="공유하고 싶은 학습 내용을 적어보세요!"
+                initialValue="내용을 입력하세요..."
+                previewStyle="vertical"
+                height="500px"
+                initialEditType="markdown"
+                useCommandShortcut={true}
+                ref={editorRef}
+            />
+            <Button onClick={() => navigate("/")}>&larr; 나가기</Button>
+            <SubmitBtn onClick={btnClickListener} disabled={!validation}>
+                출간하기
+            </SubmitBtn>
+        </>
+    );
 };
 
 export default Writer;
