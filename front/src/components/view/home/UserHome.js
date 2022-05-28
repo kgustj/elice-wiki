@@ -23,25 +23,23 @@ function UserHome() {
     }
 
     return (
-        <>
-            <div style={{ minHeight: "100vh", height: "auto" }}>
-                <Header />
-                <WeekNav setGoal={setGoal} />
-                <Container>
-                    <ContentsSide>
-                        <div style={{ padding: "0 3%" }}>
-                            <TagBtn tags={tags} />
-                        </div>
-                    </ContentsSide>
-                    <Contents>
-                        <Outlet />
-                    </Contents>
-                    <ContentsSide>
-                        {goal && <Goal goal={goal} />} <RecentList />
-                    </ContentsSide>
-                </Container>
-            </div>
-        </>
+        <div style={{ minHeight: "100vh", height: "auto" }}>
+            <Header />
+            <WeekNav setGoal={setGoal} />
+            <Container>
+                <ContentsSide>
+                    <div style={{ padding: "0 3%" }}>
+                        <TagBtn tags={tags} />
+                    </div>
+                </ContentsSide>
+                <Contents>
+                    <Outlet />
+                </Contents>
+                <ContentsSide>
+                    {goal && <Goal goal={goal} />} <RecentList />
+                </ContentsSide>
+            </Container>
+        </div>
     );
 }
 
