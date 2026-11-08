@@ -52,4 +52,11 @@ cd front && npm install && npm start
 
 ## 저장소 안내
 
-팀 GitHub 저장소(elice-mini-project/elice-wiki)를 커밋 기록과 브랜치 그대로 옮겨 온 사본입니다. 접속 정보가 담긴 `.env` 파일은 커밋 기록에서 지웠습니다.
+| 구분 | 위치 |
+|---|---|
+| 팀 원본 | [elice-mini-project/elice-wiki](https://github.com/elice-mini-project/elice-wiki) (공개) |
+| 이 저장소 | 원본의 커밋 기록과 브랜치를 그대로 옮긴 개인 사본 |
+
+원본에서는 작업이 `dev`, `feature-*` 브랜치에 있고 `master`에는 합쳐지지 않았습니다. 제 작업은 원본의 [`feature-home-hyeonseo`](https://github.com/elice-mini-project/elice-wiki/tree/feature-home-hyeonseo) 등 기능 브랜치에서 볼 수 있습니다. 이 사본은 가장 최신 브랜치(`feature-board-front`)를 `master`에 합쳐 두었습니다.
+
+접속 정보가 담긴 `.env` 파일은 이 사본의 커밋 기록에서 지웠습니다.
