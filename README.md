@@ -4,17 +4,15 @@
 
 엘리스 수강생이 커리큘럼에 따라 학습 기록을 남기고, 공유하고, 토론하는 위키형 커뮤니티 서비스입니다.
 
-> 최신 코드는 [`feature-board-front`](https://github.com/kgustj/elice-wiki/tree/feature-board-front) 브랜치에 있습니다. `dev` 브랜치의 내용도 모두 포함합니다.
-
 ## 내 역할: 프론트엔드
 
 홈, 헤더, 검색, 관리자 페이지, 마이페이지 화면을 맡았습니다. 프론트엔드 커밋 기록에서 추가한 줄 수로 팀 내 2위입니다 (4,270줄).
 
-- **홈 최근 게시물**: 최근 게시물 목록 ([`RecentList`](https://github.com/kgustj/elice-wiki/blob/feature-board-front/front/src/components/view/home/RecentList.js))
-- **헤더**: 메뉴, 로그아웃 ([`Header`](https://github.com/kgustj/elice-wiki/blob/feature-board-front/front/src/components/view/Header.js))
-- **검색 기능** ([`Search`](https://github.com/kgustj/elice-wiki/blob/feature-board-front/front/src/components/view/home/Search.js))
-- **관리자 페이지**: 페이지 구성과 라우팅을 시작했고, 이후 hongloans 님이 이어서 작업 ([`admin`](https://github.com/kgustj/elice-wiki/tree/feature-board-front/front/src/components/admin))
-- **마이페이지·유저 카드** ([`mypage`](https://github.com/kgustj/elice-wiki/tree/feature-board-front/front/src/components/mypage))
+- **홈 최근 게시물**: 최근 게시물 목록 ([`RecentList`](front/src/components/view/home/RecentList.js))
+- **헤더**: 메뉴, 로그아웃 ([`Header`](front/src/components/view/Header.js))
+- **검색 기능** ([`Search`](front/src/components/view/home/Search.js))
+- **관리자 페이지**: 페이지 구성과 라우팅을 시작했고, 이후 hongloans 님이 이어서 작업 ([`admin`](front/src/components/admin))
+- **마이페이지·유저 카드** ([`mypage`](front/src/components/mypage))
 - **UI 라이브러리 전환**: antd에서 MUI로 변경, Prettier 설정
 
 ## 주요 기능
@@ -48,7 +46,6 @@
 ## 실행
 
 ```bash
-git checkout feature-board-front
 cd back && npm install && npm start     # MySQL 접속 정보가 담긴 .env 필요
 cd front && npm install && npm start
 ```
